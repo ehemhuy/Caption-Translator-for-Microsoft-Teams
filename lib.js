@@ -5,7 +5,9 @@ const DEFAULTS = {
   provider: "ollama", // ollama | libretranslate | other
   baseUrl: "http://localhost:11434/v1",
   apiKey: "",
-  model: "qwen2.5:7b",
+  // Do bang bench.mjs tren CPU i5-14500: ngang toc do qwen2.5:3b (~1.25s/cau)
+  // nhung khong ro tieng Trung ra caption va dich dung tu ky thuat hon.
+  model: "hf.co/mradermacher/Arcee-VyLinh-GGUF:Q4_K_M",
   systemPrompt:
     "You translate live meeting captions into Vietnamese. Output ONLY the Vietnamese translation, no notes, no quotes, no original text. Keep proper nouns and technical terms as-is.",
   // The Teams DOM changes over time -> expose a knob so it can be fixed without a rebuild.
