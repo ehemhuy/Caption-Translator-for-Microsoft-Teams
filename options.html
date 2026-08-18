@@ -1,0 +1,55 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Caption Translator for Microsoft Teams</title>
+<style>
+  body { font: 13px system-ui, sans-serif; margin: 12px; width: 340px; }
+  label { display: block; margin: 10px 0 3px; font-weight: 600; }
+  input[type="text"], input[type="password"], textarea { width: 100%; box-sizing: border-box; padding: 5px; }
+  textarea { height: 90px; }
+  .row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+  .row label { margin: 0; }
+  button { padding: 5px 10px; }
+  #status { margin-left: 8px; color: #666; }
+  small { color: #666; }
+</style>
+
+<div class="row">
+  <input type="checkbox" id="enabled" /><label for="enabled">Enable caption translation</label>
+</div>
+
+<label for="provider">Provider</label>
+<select id="provider">
+  <option value="ollama">Ollama (local, LLM)</option>
+  <option value="libretranslate">LibreTranslate (local, docker)</option>
+  <option value="other">Other (OpenAI-compatible)</option>
+</select>
+
+<label for="baseUrl">API base URL</label>
+<input type="text" id="baseUrl" placeholder="http://localhost:11434/v1" />
+<small id="note"></small>
+
+<label for="apiKey">API key (leave empty when running locally)</label>
+<input type="password" id="apiKey" />
+
+<div id="llmOnly">
+  <label for="model">Model</label>
+  <input type="text" id="model" placeholder="qwen2.5:3b / gpt-4o-mini" />
+
+  <label for="systemPrompt">System prompt</label>
+  <textarea id="systemPrompt"></textarea>
+</div>
+
+<label for="captionSelector">Caption selector (only change if Teams changes its DOM)</label>
+<input type="text" id="captionSelector" />
+
+<label for="authorSelector">Author selector</label>
+<input type="text" id="authorSelector" />
+
+<p>
+  <button id="save">Save</button>
+  <button id="test">Test</button>
+  <span id="status"></span>
+</p>
+
+<script src="lib.js"></script>
+<script src="options.js"></script>
